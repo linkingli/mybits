@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<!-- 加载数据库配置文件 -->
+	<properties resource="jdbc.properties"/>
+	
+	<!-- 找我们的实体类（与数据库表格对应的类） -->
+	<typeAliases>
+		<package name="domain"/>
+	</typeAliases>
+	
+	<!-- 配置我们的环境 -->
+	<environments default="development">
+		<environment id="development">
+			<!-- 配置事物管理，目前由mybatis管理 -->
+			<transactionManager type="JDBC"/>
+			<!-- 配置数据源，目前由mybatis控制 -->
+			<dataSource type="POOLED">
+				<property name="driver" value="${driverClassName}"/>
+				<property name="url" value="${url}"/>
+				<property name="username" value="${username}"/>
+				<property name="password" value="${password}"/>
+			</dataSource>
+		</environment>
+	</environments>
+	
+	
+	<!-- 扫描mapper.xml 和 mapper.java用的 -->
+	<mappers>
+		<package name="mapper"/>
+	</mappers>
+	
+	
+	
+</configuration>
